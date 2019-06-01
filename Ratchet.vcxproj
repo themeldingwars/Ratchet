@@ -222,6 +222,7 @@
     <ClInclude Include="VersionProxy\VersionProxy.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Copy to client bin folder\Ratchet\Config.json" />
     <None Include="VersionProxy\version.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

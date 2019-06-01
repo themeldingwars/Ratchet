@@ -1,0 +1,8 @@
+{
+  "Debug": {
+    "ShowMessageBoxOnLoad": false
+  },
+  "ShowConsoleWindow": true,
+  "ExeName": "Firefall TMW Patched.exe",
+  "ModuleBaseAddr": 4194304
+}

@@ -4,12 +4,13 @@ REM Edit this with the path to your Firefall install
 REM Dest
 SET FIREFALL_INSTALL="F:\Games\Firefall\system\bin"
 SET CLIENT_EXE="Firefall TMW Patched.exe"
-SET LAUNCH_CLIENT="false"
+SET LAUNCH_CLIENT="true"
 
 REM Src
 SET SRC_DIR=%1
 
 COPY %SRC_DIR%Version.dll %FIREFALL_INSTALL%\Version.dll
+XCOPY /S /E /Y "%SRC_DIR%../../Copy to client bin folder" %FIREFALL_INSTALL%
 IF %LAUNCH_CLIENT% == "true" ( START "" ""%FIREFALL_INSTALL%\%CLIENT_EXE%"" )
 
 exit 0
