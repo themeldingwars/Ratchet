@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="VersionProxy">
+      <UniqueIdentifier>{5a2e1c62-d48c-4ff7-8b1f-aeb94ce92614}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Main\Hooks">
+      <UniqueIdentifier>{a723f519-1a11-431e-bc7a-8bb2d6d3f392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Utils">
+      <UniqueIdentifier>{8efbf1ea-eb1d-429b-a979-084a270e10f3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="VersionProxy\VersionProxy.cpp">
+      <Filter>VersionProxy</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\FauFau\FauFau.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Config.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Logger.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Hooks\Hooks.cpp">
+      <Filter>Main\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Utils\Utils.cpp">
+      <Filter>Main\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Hooks\FFHooks.cpp">
+      <Filter>Main\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Utils\MemEd.cpp">
+      <Filter>Main\Utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="VersionProxy\VersionProxy.h">
+      <Filter>VersionProxy</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Main.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Hooks\Hooks.h">
+      <Filter>Main\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Utils\Utils.h">
+      <Filter>Main\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Logger.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\FauFau\FauFau.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Config.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Hooks\FFHooks.h">
+      <Filter>Main\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Utils\MemEd.h">
+      <Filter>Main\Utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="VersionProxy\version.def">
+      <Filter>VersionProxy</Filter>
+    </None>
+  </ItemGroup>
+</Project>

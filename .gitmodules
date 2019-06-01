@@ -1,0 +1,4 @@
+[submodule "Lib/spdlog"]
+	path = Lib/spdlog
+	url = https://github.com/gabime/spdlog.git
+	shallow = true

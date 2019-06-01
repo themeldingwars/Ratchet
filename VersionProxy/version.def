@@ -1,0 +1,20 @@
+LIBRARY "version"
+
+EXPORTS
+	GetFileVersionInfoA=wrappedGetFileVersionInfoA
+	GetFileVersionInfoByHandle=wrappedGetFileVersionInfoByHandle
+	GetFileVersionInfoExA=wrappedGetFileVersionInfoExA
+	GetFileVersionInfoExW=wrappedGetFileVersionInfoExW
+	GetFileVersionInfoSizeA=wrappedGetFileVersionInfoSizeA
+	GetFileVersionInfoSizeExA=wrappedGetFileVersionInfoSizeExA
+	GetFileVersionInfoSizeExW=wrappedGetFileVersionInfoSizeExW
+	GetFileVersionInfoSizeW=wrappedGetFileVersionInfoSizeW
+	GetFileVersionInfoW=wrappedGetFileVersionInfoW
+	VerFindFileA=wrappedVerFindFileA
+	VerFindFileW=wrappedVerFindFileW
+	VerInstallFileA=wrappedVerInstallFileA
+	VerInstallFileW=wrappedVerInstallFileW
+	VerLanguageNameA=wrappedVerLanguageNameA
+	VerLanguageNameW=wrappedVerLanguageNameW
+	VerQueryValueA=wrappedVerQueryValueA
+	VerQueryValueW=wrappedVerQueryValueW
