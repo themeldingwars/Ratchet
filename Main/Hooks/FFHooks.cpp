@@ -2,6 +2,7 @@
 #include <spdlog/spdlog.h>
 
 #include "FFHooks.h"
+#include "../CLR/CLR.h"
 
 // Split off in to files as need be
 //===============================================
@@ -16,6 +17,7 @@ int FF::Console::HelpHook(int A1)
 {
 	printf("Console help function :>\n");
 	auto ret = FF::Console::Help.Trampoline(A1);
+	CLR::RunInteropBenchmark();
 	return ret;
 }
 

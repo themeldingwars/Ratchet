@@ -15,6 +15,7 @@
 #include "Logger.h"
 #include "Config.h"
 #include "Hooks/FFHooks.h"
+#include "CLR/CLR.h"
 
 std::thread InjectedThread;
 bool AfterLoadInitHasRun = false;
@@ -49,6 +50,7 @@ void Start()
 {
 	Logger::Init();
 	FF::InstallHooks();
+	CLR::Init();
 
 	// Create dirs
 	std::experimental::filesystem::create_directories(BaseDIR);
@@ -90,6 +92,7 @@ BOOL ProcessDetach(HMODULE hModule)
 	if (hVersion)
 		FreeLibrary(hVersion);
 
+	CLR::DeInit();
 	Hooks::UninstallAllHooks();
 	Logger::Flush();
 

@@ -13,6 +13,8 @@ namespace Logger
 {
 	std::shared_ptr<spdlog::logger> Main;
 	std::shared_ptr<spdlog::logger> Hooks;
+	std::shared_ptr<spdlog::logger> CLR;
+	std::shared_ptr<spdlog::logger> DotNet;
 
 	std::shared_ptr<spdlog::logger> CreateLogger(const std::string Name, const std::string LogPattern, const std::vector<spdlog::sink_ptr> &Sinks)
 	{
@@ -41,8 +43,10 @@ namespace Logger
 		}
 
 		auto logPattern = "%^[%T]%$ %^[%n]%$ %^[%l]%$ %v";
-		Main  = CreateLogger("Main", logPattern, sinks);
-		Hooks = CreateLogger("Hooks", logPattern, sinks);
+		Main            = CreateLogger("Main", logPattern, sinks);
+		Hooks           = CreateLogger("Hooks", logPattern, sinks);
+		CLR             = CreateLogger("CLR", logPattern, sinks);
+		DotNet          = CreateLogger(".Net", logPattern, sinks);
 
 		Main->set_pattern(logPattern);
 		Main->flush_on(spdlog::level::warn);
@@ -66,5 +70,7 @@ namespace Logger
 	{
 		Main->flush();
 		Hooks->flush();
+		CLR->flush();
+		DotNet->flush();
 	}
 }

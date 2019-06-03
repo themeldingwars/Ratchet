@@ -22,6 +22,12 @@ std::string Utils::GetCurrentDir()
 	return string(buffer).substr(0, pos);
 }
 
+std::string Utils::GetRatchetDir()
+{
+	auto dir = Utils::GetCurrentDir() + "\\" + TITLE + "\\";
+	return dir;
+}
+
 std::string Utils::ReadAllText(std::string& FilePath)
 {
 	std::ifstream fs(FilePath);

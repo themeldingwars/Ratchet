@@ -1,7 +1,6 @@
 #pragma once
 
 #include <memory>
-
 namespace spdlog
 {
 	class logger;
@@ -16,5 +15,7 @@ namespace Logger
 
 	extern std::shared_ptr<spdlog::logger> Main;
 	extern std::shared_ptr<spdlog::logger> Hooks;
+	extern std::shared_ptr<spdlog::logger> CLR;
+	extern std::shared_ptr<spdlog::logger> DotNet;
 }
 

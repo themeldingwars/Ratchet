@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+Copy to client bin folder/Ratchet/.Net Core/
+Copy to client bin folder/Ratchet/RatchetSharp/
+Ratchet/
+
 # User-specific files
 *.suo
 *.user

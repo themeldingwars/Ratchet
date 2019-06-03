@@ -56,6 +56,8 @@
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Ratchet|Win32'">
     <PlatformToolset>v141</PlatformToolset>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <PlatformToolset>v141</PlatformToolset>
@@ -108,6 +110,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(ProjectDir)Lib\spdlog\include;$(ProjectDir)Lib\polyhook;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)Lib\polyhook\PolyHook_2.lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Ratchet|Win32'">
+    <IncludePath>$(ProjectDir)Lib\spdlog\include;$(ProjectDir)Lib\polyhook;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)Lib\polyhook\PolyHook_2.lib;$(LibraryPath)</LibraryPath>
+    <TargetName>Version</TargetName>
+    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -199,7 +207,23 @@
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Ratchet|Win32'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>call "$(MSBuildProjectDirectory)\PostBuild.bat" "$(OutputPath)" </Command>
+    </PostBuildEvent>
+    <Link>
+      <ModuleDefinitionFile>$(ProjectDir)VersionProxy/version.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Main\CLR\CLR.cpp" />
     <ClCompile Include="Main\Hooks\FFHooks.cpp" />
     <ClCompile Include="Main\Hooks\Hooks.cpp" />
     <ClCompile Include="Main\Logger.cpp" />
@@ -211,6 +235,8 @@
     <ClCompile Include="VersionProxy\VersionProxy.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Main\CLR\CLR.h" />
+    <ClInclude Include="Main\CLR\coreclrhost.h" />
     <ClInclude Include="Main\Hooks\FFHooks.h" />
     <ClInclude Include="Main\Hooks\Hooks.h" />
     <ClInclude Include="Main\Logger.h" />

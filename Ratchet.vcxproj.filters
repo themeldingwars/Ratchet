@@ -14,6 +14,9 @@
     <Filter Include="Main\Utils">
       <UniqueIdentifier>{8efbf1ea-eb1d-429b-a979-084a270e10f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main\CLR">
+      <UniqueIdentifier>{52d62f27-589f-42d4-a820-aa1cc72d430d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VersionProxy\VersionProxy.cpp">
@@ -43,6 +46,9 @@
     <ClCompile Include="Main\Utils\MemEd.cpp">
       <Filter>Main\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Main\CLR\CLR.cpp">
+      <Filter>Main\CLR</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VersionProxy\VersionProxy.h">
@@ -71,6 +77,12 @@
     </ClInclude>
     <ClInclude Include="Main\Utils\MemEd.h">
       <Filter>Main\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\CLR\coreclrhost.h">
+      <Filter>Main\CLR</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\CLR\CLR.h">
+      <Filter>Main\CLR</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,7 @@ public:
 	~Utils();
 
 	static std::string GetCurrentDir();
+	static std::string GetRatchetDir();
 	static std::string ReadAllText(std::string& FIlePath);
 	static std::string Utils::PrettyPrintBuffer(char* buffer, DWORD bufferLen);
 };
