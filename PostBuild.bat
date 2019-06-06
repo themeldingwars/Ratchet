@@ -11,6 +11,7 @@ SET SRC_DIR=%1
 
 COPY %SRC_DIR%Version.dll %FIREFALL_INSTALL%\Version.dll
 XCOPY /S /E /Y "%SRC_DIR%..\Copy to client bin folder" %FIREFALL_INSTALL%
+COPY "%SRC_DIR%..\Copy to client bin folder\Ratchet\RatchetSharp\RatchetSharp.dll" "%FIREFALL_INSTALL%\Ratchet\RatchetSharp\RatchetSharp.dll"
 IF %LAUNCH_CLIENT% == "true" ( START "" ""%FIREFALL_INSTALL%\%CLIENT_EXE%"" )
 
 exit 0

@@ -7,6 +7,7 @@
 #include "../Utils/Utils.h"
 #include "spdlog/spdlog.h"
 #include "../Logger.h"
+#include "../Hooks/Hooks.h"
 
 namespace CLR
 {
@@ -150,6 +151,9 @@ namespace CLR
 		ExposeFunction("Log",							(unsigned int)&Log);
 		ExposeFunction("CallbackTest",					(unsigned int)&CallbackTest);
 		ExposeFunction("ManagedBenchmarkCallback",		(unsigned int)&ManagedBenchmarkCallback);
+
+		// Hooking
+		ExposeFunction("InstallHook", (unsigned int)&InstallHookCLR);
 	}
 
 	// A simple callback to test from managed code
@@ -252,6 +256,14 @@ namespace CLR
 
 
 		Logger::CLR->info("==== Finished CLR Interop benchmarks ====");
+	}
+
+	uint64_t InstallHookCLR(uint64_t Offset, const char* Name, void** HandlerPtr)
+	{
+		Logger::CLR->info("Offset: {}, Name: {}, HandlerPtr: {}", Offset, Name, (uint64_t)HandlerPtr);
+		auto trampoline = Hooks::InstallSimpleHook(Offset, Name, (uint64_t)HandlerPtr);
+		return trampoline;
+
 	}
 
 	void DeInit()

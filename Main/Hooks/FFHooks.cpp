@@ -10,7 +10,7 @@
 void FF::InstallHooks()
 {
 	Hooks::InstallHook(FF::Console::Help);
-	Hooks::InstallHook(FF::Console::ReloadUI);
+	//Hooks::InstallHook(FF::Console::ReloadUI);
 }
 
 int FF::Console::HelpHook(int A1)

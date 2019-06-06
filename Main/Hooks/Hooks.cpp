@@ -25,6 +25,23 @@ namespace Hooks
 		}
 	}
 
+	uint64_t InstallSimpleHook(uint64_t Offset, const char* Name, uint64_t HookHandler)
+	{
+		auto offset = MemEd::GetRelPtr(Offset);
+		uint64_t trampoline = 0;
+		auto detour = new PLH::x86Detour(offset, (uint64_t)HookHandler, (uint64_t*)(&trampoline), Disambler);
+
+		if (detour->hook()) {
+			DetourMap[Offset] = std::make_tuple(Name, detour);
+			Logger::Hooks->info("Hooked {} at {:#04x}", Name, Offset);
+		}
+		else {
+			Logger::Hooks->warn("Failed to hook {} at {:#04x}", Name, Offset);
+		}
+
+		return trampoline;
+	}
+
 	void UninstallAllHooks()
 	{
 		Logger::Hooks->info("Uninstalling all {} installed hooks...", DetourMap.size());

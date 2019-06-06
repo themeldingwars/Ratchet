@@ -21,7 +21,17 @@ namespace RatchetSharp
         // Called when the CLR is started
         static void Setup()
         {
+            SetupGlobalLogging();
+            Hook.ScanAndInstallHooks();
             Logger.Info("Managed setup called :D");
+        }
+
+        private static void SetupGlobalLogging()
+        {
+            AppDomain.CurrentDomain.FirstChanceException += (sender, eventArgs) =>
+            {
+                Logger.Error(eventArgs.Exception.ToString());
+            };
         }
 
         // Called from c++ to give a list of native functions offsets to be bound

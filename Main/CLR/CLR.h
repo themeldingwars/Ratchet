@@ -34,6 +34,9 @@ namespace CLR
 
 	void BuildTpaList(const char* Directory, const char* Extension, std::string& TpaList);
 
+	uint64_t InstallHookCLR(uint64_t Offset, const char* Name, void** HandlerPtr);
+
+
 	extern "C" {
 		__declspec(dllimport) void Log(int Level, char* Msg);
 		__declspec(dllimport) void CallbackTest();

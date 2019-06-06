@@ -1,6 +1,7 @@
 ﻿/*
 	Ratchet
 	A client modification framework and tool
+	- Arkii
 */
 
 #include "Main.h"

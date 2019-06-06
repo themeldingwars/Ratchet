@@ -42,17 +42,10 @@ namespace Hooks
 	template<typename T>
 	void InstallHook(FuncDef<T> &Hook)
 	{
-		auto offset = MemEd::GetRelPtr(Hook.Offset);
-		auto detour = new PLH::x86Detour(offset, (uint64_t)Hook.HookHandler, (uint64_t*)(&Hook.Trampoline), Disambler);
-
-		if (detour->hook()) {
-			DetourMap[Hook.Offset] = std::make_tuple(Hook.Name, detour);
-			Logger::Hooks->info("Hooked {} at {:#04x}", Hook.Name.c_str(), Hook.Offset);
-		}
-		else {
-			Logger::Hooks->warn("Failed to hook {} at {:#04x}", Hook.Name.c_str(), Hook.Offset);
-		}
+		Hook.Trampoline = (T)InstallSimpleHook(Hook.Offset, Hook.Name.c_str(), Hook.HookHandler);
 	}
+
+	uint64_t InstallSimpleHook(uint64_t Offset, const char* Name, uint64_t HookHandler);
 
 	void UninstallHook(uint64_t Offset);
 
