@@ -89,6 +89,6 @@
     <None Include="VersionProxy\version.def">
       <Filter>VersionProxy</Filter>
     </None>
-    <None Include="Copy to client bin folder\Ratchet\Config.json" />
+    <None Include="Staging\Ratchet\Config.json" />
   </ItemGroup>
 </Project>

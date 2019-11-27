@@ -1,11 +1,11 @@
 # 🔧 Ratchet
-A gameclient hooking framework to aid debuging by embed the .Net core run time into the target.
+A game client hooking framework to aid debugging by embedding the .Net Core run time into the target.
 In this case Firefall, to all debugging and extensions written with the full power of .Net Core and C#
 
 Can use either the C++ layer or the C# layer
 
-# Features 
-* Easy hooking from c++
+# Features
+* Easy hooking from C++
 ```cpp
 // Define the hook
 int HelpHook(int A1);
@@ -21,7 +21,7 @@ Hooks::UninstallHook(Help);
 int HelpHook(int A1)
 {
 	printf("Console help function :>\n");
-	auto ret = Help.Trampoline(A1); // Call the orignal function
+	auto ret = Help.Trampoline(A1); // Call the original function
 	return ret;
 }
 ```
@@ -40,9 +40,9 @@ public static int ReloadUI(int A1)
     return ReloadUICB(A1); ;
 }
 ```
-(Hoping to simplfiy that more too)
+(Hoping to simplify that more too)
 
-* Easy bindings for c# / C++ interop
+* Easy bindings for C# / C++ interop
 ```c++
 // Binding to a c# defined function
 typedef void(*VoidFunc)();
@@ -86,14 +86,15 @@ LogCB(1, ":>"); // call it
 ```
 
 # Building
-* After cloning the repo run the Setup.ps1 script to download and extract the .Net Core runtime files to the corret directory.
-* Edit the PostBuild.bat file to point to your Firefall install.
-* Then just open the solution and compile the project, after the build all the needed files will be copyied to the games install and the game will launch.
+* After cloning the repo run the Setup.ps1 script as Admin to download and extract the .Net Core runtime files to the correct directory.
+* Edit the PostBuild.bat file to point to your Firefall install, your Firefall Client exe, and if you want it to launch when Ratchet is compiled.
+* Edit the Staging/Ratchet/Config.json file with your Firefall Client Exe name.
+* Then open the solution and compile the project, after the build all the needed files will be copied to the Firefall install and the game will launch if specified.
 
 # Future goals
 * Runtime script reloading
-* IMGUI bingings and Dx9 hooking for easy UI debug widgets
-* I'd like to split it off in to a more genral purpse framework for easy use in other games / applications
+* IMGUI bindings and Dx9 hooking for easy UI debug widgets
+* I'd like to split it off in to a more general purpose framework for easy use in other games / applications
 
 ## Libraries / other projects used
 * [Polyhook V2](https://github.com/stevemk14ebr/PolyHook_2_0)

@@ -131,7 +131,7 @@
       <ModuleDefinitionFile>$(ProjectDir)VersionProxy/version.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>call "$(MSBuildProjectDirectory)\PostBuild.bat" "$(OutputPath)" </Command>
+      <Command>call "$(MSBuildProjectDirectory)\PostBuild.bat" "$(OutputPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,7 +156,7 @@
       <AdditionalDependencies>$(SolutionDir)Deployment\SocketIO.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>del $(SolutionDir)\Deployment\*.pdb &amp;&amp; del $(SolutionDir)\Deployment\*.exp</Command>
+      <Command>call "$(MSBuildProjectDirectory)\PostBuild.bat" "$(OutputPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Ratchet|x64'">
@@ -181,12 +181,12 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>del $(SolutionDir)\Deployment\*.pdb &amp;&amp; del $(SolutionDir)\Deployment\*.exp &amp;&amp; copy /Y "$(TargetDir)$(TargetName).dll" "G:\Games\Steam\steamapps\common\NieRAutomata\$(TargetName).dll"</Command>
+      <Command>call "$(MSBuildProjectDirectory)\PostBuild.bat" "$(OutputPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <PostBuildEvent>
-      <Command>call "$(MSBuildProjectDirectory)\PostBuild.bat" "$(OutputPath)" </Command>
+      <Command>call "$(MSBuildProjectDirectory)\PostBuild.bat" "$(OutputPath)"</Command>
     </PostBuildEvent>
     <ClCompile>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -206,6 +206,9 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <PostBuildEvent>
+      <Command>call "$(MSBuildProjectDirectory)\PostBuild.bat" "$(OutputPath)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Ratchet|Win32'">
     <ClCompile>
@@ -216,7 +219,7 @@
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <PostBuildEvent>
-      <Command>call "$(MSBuildProjectDirectory)\PostBuild.bat" "$(OutputPath)" </Command>
+      <Command>call "$(MSBuildProjectDirectory)\PostBuild.bat" "$(OutputPath)"</Command>
     </PostBuildEvent>
     <Link>
       <ModuleDefinitionFile>$(ProjectDir)VersionProxy/version.def</ModuleDefinitionFile>
@@ -252,13 +255,4 @@
     <None Include="VersionProxy\version.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-    <Import Project="packages\minhook.1.3.3\build\native\minhook.targets" Condition="Exists('packages\minhook.1.3.3\build\native\minhook.targets')" />
-  </ImportGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\minhook.1.3.3\build\native\minhook.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\minhook.1.3.3\build\native\minhook.targets'))" />
-  </Target>
 </Project>

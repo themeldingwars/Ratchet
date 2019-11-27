@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="COPY &quot;$(TargetPath)&quot; &quot;$(SolutionDir)Copy to client bin folder\Ratchet\RatchetSharp\$(TargetFileName)&quot;" />
+    <Exec Command="XCOPY &quot;$(TargetPath)&quot; &quot;$(SolutionDir)Staging\Ratchet\RatchetSharp\&quot; /Y /I&#xD;&#xA;&#xD;&#xA;call &quot;$(SolutionDir)PostBuild.bat&quot; &quot;$(SolutionDir)Win32\Debug\&quot;" />
   </Target>
 
 </Project>

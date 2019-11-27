@@ -7,11 +7,12 @@ SET CLIENT_EXE="Firefall TMW Patched.exe"
 SET LAUNCH_CLIENT="true"
 
 REM Src
-SET SRC_DIR=%1
+SET SRC_DIR=%~1
 
-COPY %SRC_DIR%Version.dll %FIREFALL_INSTALL%\Version.dll
-XCOPY /S /E /Y "%SRC_DIR%..\Copy to client bin folder" %FIREFALL_INSTALL%
-COPY "%SRC_DIR%..\Copy to client bin folder\Ratchet\RatchetSharp\RatchetSharp.dll" "%FIREFALL_INSTALL%\Ratchet\RatchetSharp\RatchetSharp.dll"
+COPY "%SRC_DIR%Version.dll" %FIREFALL_INSTALL%\Version.dll
+XCOPY "%SRC_DIR%..\..\Staging" %FIREFALL_INSTALL% /S /E /Y
+COPY "%SRC_DIR%..\..\Staging\Ratchet\RatchetSharp\RatchetSharp.dll" "%FIREFALL_INSTALL%\Ratchet\RatchetSharp\RatchetSharp.dll"
+
 IF %LAUNCH_CLIENT% == "true" ( START "" ""%FIREFALL_INSTALL%\%CLIENT_EXE%"" )
 
 exit 0
